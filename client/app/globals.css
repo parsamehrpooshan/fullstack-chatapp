@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Design tokens — see the F1 design notes in docs/done.md.
+   "A direct line between two people": warm porcelain canvas, deep pine brand,
+   a live emerald signal accent. */
+@theme {
+  --color-canvas: #f6f5f1;
+  --color-surface: #ffffff;
+  --color-ink: #16201b;
+  --color-muted: #5e6b63;
+  --color-line: #e4e2da;
+
+  --color-brand: #1f4d3d;
+  --color-brand-hover: #163a2e;
+  --color-signal: #12b886;
+  --color-signal-soft: #e7f6ef;
+
+  --color-danger: #b23b2e;
+  --color-danger-hover: #9a3125;
+  --color-danger-soft: #fbecea;
+
+  --font-display: var(--font-bricolage);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+
+  --radius-xl: 16px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: #fff;
+}
+
+/* Card / content entrance. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-rise {
+  animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The "live" node on the brand mark — a slow signal pulse. */
+@keyframes live-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-signal) 50%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-signal) 0%, transparent);
+  }
+}
+.live-dot {
+  animation: live-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .live-dot {
+    animation: none;
+  }
+}

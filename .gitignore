@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.next/
+out/
+
+# SQLite database and its WAL sidecar files
+chat.db
+chat.db-shm
+chat.db-wal
+
+# Secrets & local env (each app also has .env.example / documented vars)
+.env
+.env.local
+.env*.local
+
+# Logs & OS cruft
+*.log
+npm-debug.log*
+.DS_Store

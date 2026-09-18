@@ -1,0 +1,10 @@
+node_modules/
+dist/
+
+# SQLite database and its WAL sidecar files
+chat.db
+chat.db-shm
+chat.db-wal
+
+# secrets
+.env
